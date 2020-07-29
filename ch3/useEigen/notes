@@ -1,0 +1,42 @@
+in case of using eigen3
+1. $ sudo apt-get install libeigen3-dev
+   (it should be under the /usr/include/eigen3
+ 使用时只需要引入头文件，而不需要链接库文件 "include_directories("/usr/include/eigen3")
+	
+
+关于eigen3的常见操作命令
+	1. 声明矩阵 
+		××× Eigen::Matrix<float, 2, 3> matrix_23;
+
+	2. 动态大小矩阵
+	Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> matrix_dynamic
+
+	或者 Eigen::MatrixXd matrix_x
+
+	3.  显示转换
+	Eigen::Matrix<double, 2, 1> result = matrix_23.cast<double>() * v_3d;
+
+	4. 一些运算
+	matrix.transpose()
+	matrix.sum() -> 各元素和
+	matrix.trace() 
+	matrix. inverse()
+	matrix.determinant 行列式
+
+	5. 求取特征值
+	Eigen:: SelfAdjointEigenSolver<Eigen::Matrix3d> eigen_solver (matrix.transpose() * matrix)
+	eigen_solver.eigenvalues()
+	eigen_solver.eigenvectors()
+
+	6.  矩阵分解
+	matrix.colPivHouseholderQr().solve(v_Nd)
+
+	7. 四元数 ： Eigen::Quaterniond
+	
+	8. 仿射变换 ： Eigen::Affine3d
+
+	9. 射影变换： Eigen::Projective3d
+
+	10. 欧式变换 ： Eigen::Isometry3d
+	
+	11. 
